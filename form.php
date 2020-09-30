@@ -8,11 +8,11 @@ use yii\widgets\ActiveForm;
     
     <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($problems, 'name') ?>
-        <?= $form->field($problems, 'email') ?>
-        <?= $form->field($problems, 'address') ?>
-        <?= $form->field($problems, 'phonenum') ?>
-        <?= $form->field($problems, 'info') ?>
+        <?= $form->field($problems, 'name')->label('Username:') ?>
+        <?= $form->field($problems, 'email')->label('E-mail address:') ?>
+        <?= $form->field($problems, 'address')->label('Address:') ?>
+        <?= $form->field($problems, 'phonenum')->label('Phone number:') ?>
+        <?= $form->field($problems, 'info')->label('Please specify your problem:') ?>
     
         <div class="form-group">
             <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
