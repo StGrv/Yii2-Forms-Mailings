@@ -18,6 +18,7 @@ class Problems extends \yii\db\ActiveRecord
             [['phonenum'], 'integer'],
             [['info'], 'string'],
             [['name'], 'string', 'max' => 50],
+            [['email'], 'email'],
             [['email'], 'string', 'max' => 50],
             [['address'], 'string', 'max' => 100],
         ];
