@@ -11,7 +11,6 @@ use yii\filters\VerbFilter;
 
 class ProblemsController extends \yii\web\Controller
 {
-    
     public function actionIndex()
     {
         $problems = new Problems() ;
@@ -19,6 +18,7 @@ class ProblemsController extends \yii\web\Controller
         if ($problems->load(Yii::$app->request->post())) {
             if ($problems->validate()) {
                 $problems->save() ;
+                Yii::$app->session->setFlash('success', "The form has been sent successfully! We will contact you back as soon as possible.") ; 
                  
                 \Yii::$app->mailer->compose()
                     ->setFrom($problems->email)
@@ -33,11 +33,10 @@ class ProblemsController extends \yii\web\Controller
                     
                     )
                     ->send() ;
+                 return $this->refresh() ; // clear the input fields
                 //return $this->render('../site/index') ; 
             }
-            
-        else echo "Something went wrong" ;
-            
+          else Yii::$app->session->setFlash('error', "Something went wrong! Please try again");
         }
         return $this->render('index', ['problems' => $problems ]);
     }
